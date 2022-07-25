@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/navigation"
+    app:startDestination="@id/signInOrSignUp">
+
+    <fragment
+        android:id="@+id/signInOrSignUp"
+        android:name="com.bottlerunner.room_o_swap.SignInOrSignUp"
+        android:label="SignInOrSignUp" >
+        <action
+            android:id="@+id/action_signInOrSignUp_to_homeFragment"
+            app:destination="@id/homeFragment"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/homeFragment"
+        android:name="com.bottlerunner.room_o_swap.HomeFragment"
+        android:label="HomeFragment" >
+        <action
+            android:id="@+id/action_homeFragment_to_addRequestFragment"
+            app:destination="@id/addRequestFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_aboutUsFragment"
+            app:destination="@id/aboutUsFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_helpFragment"
+            app:destination="@id/helpFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addRequestFragment"
+        android:name="com.bottlerunner.room_o_swap.AddRequestFragment"
+        android:label="AddRequestFragment" >
+        <action
+            android:id="@+id/action_addRequestFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/aboutUsFragment"
+        android:name="com.bottlerunner.room_o_swap.AboutUsFragment"
+        android:label="AboutUsFragment" />
+    <fragment
+        android:id="@+id/helpFragment"
+        android:name="com.bottlerunner.room_o_swap.HelpFragment"
+        android:label="HelpFragment" />
+</navigation>
