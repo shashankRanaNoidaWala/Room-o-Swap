@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="hostels">
+        <item>AH-1</item>
+        <item>AH-2</item>
+        <item>AH-3</item>
+        <item>AH-4</item>
+        <item>AH-5</item>
+        <item>AH-6</item>
+        <item>AH-7</item>
+        <item>CH-1</item>
+        <item>CH-2</item>
+        <item>CH-3</item>
+        <item>CH-4</item>
+        <item>CH-5</item>
+        <item>CH-6</item>
+        <item>CH-7</item>
+        <item>DH-1(OG)</item>
+        <item>DH-2</item>
+        <item>DH-3</item>
+        <item>DH-4(MC)</item>
+        <item>DH-5</item>
+        <item>DH-6</item>
+    </string-array>
+</resources>

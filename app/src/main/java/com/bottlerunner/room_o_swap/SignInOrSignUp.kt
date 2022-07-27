@@ -39,6 +39,17 @@ class SignInOrSignUp : Fragment() {
             }
         }
 
+        binding.btnSignIn.setOnClickListener {
+
+            if(view!= null){
+
+                Navigation.findNavController(view!!).navigate(R.id.action_signInOrSignUp_to_signInFragment)
+            }
+            else{
+                binding.btnSignUp.text="No view found"
+            }
+        }
+
         return binding.root
     }
 
