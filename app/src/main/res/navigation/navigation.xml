@@ -9,9 +9,8 @@
         android:name="com.bottlerunner.room_o_swap.SignInOrSignUp"
         android:label="SignInOrSignUp" >
         <action
-            android:id="@+id/action_signInOrSignUp_to_homeFragment"
-            app:destination="@id/homeFragment"
-            app:popUpToInclusive="false" />
+            android:id="@+id/action_signInOrSignUp_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
     </fragment>
     <fragment
         android:id="@+id/homeFragment"
@@ -43,4 +42,12 @@
         android:id="@+id/helpFragment"
         android:name="com.bottlerunner.room_o_swap.HelpFragment"
         android:label="HelpFragment" />
+    <fragment
+        android:id="@+id/signUpFragment"
+        android:name="com.bottlerunner.room_o_swap.SignUpFragment"
+        android:label="SignUpFragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
 </navigation>

@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "540422469862",
+    "project_id": "room-o-swap",
+    "storage_bucket": "room-o-swap.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:540422469862:android:1c97b0f42ffc45ce462327",
+        "android_client_info": {
+          "package_name": "com.bottlerunner.room_o_swap"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "540422469862-sgje1ogr4cj4lg4be02f5pgq6h2gj2e7.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.bottlerunner.room_o_swap",
+            "certificate_hash": "61968138ae97fde651cb8e94e8e64c68e09a536b"
+          }
+        },
+        {
+          "client_id": "540422469862-6lg36kfb8796a6sngbm38463rhec5jt2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBXw-ueUUvS9eXkGAuuRBhwNIzA_sThUq4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "540422469862-6lg36kfb8796a6sngbm38463rhec5jt2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
