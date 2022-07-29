@@ -17,7 +17,6 @@ import com.google.firebase.auth.FirebaseAuth
 
 class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
 
-    private lateinit var auth: FirebaseAuth
     private lateinit var email:String
     private lateinit var password: String
     private lateinit var name :String
@@ -30,20 +29,15 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
         savedInstanceState: Bundle?
     ): View? {
 
-        var binding = DataBindingUtil.inflate<FragmentSignUpBinding>(inflater
-            ,R.layout.fragment_sign_in,container,false)
+        var binding = DataBindingUtil.inflate<FragmentSignInBinding>(inflater,R.layout.fragment_sign_in,container,false)
 
-        binding.btnSignUpSignUpFrag.setOnClickListener {
-            Navigation.findNavController(view!!).navigate(R.id.action_signInFragment_to_homeFragment)
-        }
-
-        binding.btnSignUpSignUpFrag.setOnClickListener{
-            email = binding.tietEmail.toString()
-            password= binding.textInputLayout2.toString()
-            name =binding.tietName.text.toString()
+        binding.btnSignInSignIn.setOnClickListener {
+            email=binding.tietEmailSignIn.text.toString()
+            password=binding.tietPasswordSignIn.text.toString()
             if(validateForm(email,password)){
-                signInUser(email, password)
+                signInUser(email,password)
             }
+
         }
 
         return binding.root
@@ -53,7 +47,7 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
         Toast.makeText(currContext,"Darling darling stand, stand by me, stand, stand by, stand by me, stand by me, stand by me",
             Toast.LENGTH_LONG).show()
         showProgressDialog("Thamba thamba")
-        auth.signInWithEmailAndPassword(email,password).addOnCompleteListener {      //This is lamda function
+        FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password).addOnCompleteListener {      //This is lamda function
             hideProgressDialog()                                                                                        //Know how to make it a regular one
             if (it.isSuccessful) {
                 val firebaseUser = it.result!!.user!!
@@ -71,11 +65,8 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
         }
     }
 
-    private fun validateForm(name: String, email: String, password: String): Boolean{
-        if(name.length == 0){
-            showError("Please enter a valid name")
-            return false
-        }
+    private fun validateForm(email: String, password: String): Boolean{
+
         if(email.length == 0){
             showError("Please enter a valid email")
             return true

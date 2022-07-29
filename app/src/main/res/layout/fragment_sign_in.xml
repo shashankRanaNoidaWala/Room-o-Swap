@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
@@ -55,9 +56,8 @@
                     app:helperText="Hello Frands"
                     app:startIconDrawable="@drawable/ic_email">
 
-
-
                     <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/tietEmailSignIn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Email"
@@ -75,7 +75,7 @@
                     app:startIconDrawable="@drawable/ic_lock">
 
                     <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/Password"
+                        android:id="@+id/tietPasswordSignIn"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:hint="Password"

@@ -25,7 +25,7 @@ class RequestAdapter(var context: Context, var history: MutableList<Request>)
         tv_from_card.text = Database.requestList[position].fromHostel
 
         var textOfToHostel :String =""
-        for(i in Database.requestList[position].toHostel){
+        for(i in Database.requestList[position].toHostelList[0].first){
             textOfToHostel= textOfToHostel + i +"\n"
         }
         tv_to_card.text = textOfToHostel

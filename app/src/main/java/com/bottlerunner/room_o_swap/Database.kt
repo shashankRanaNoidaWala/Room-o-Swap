@@ -4,6 +4,6 @@ object Database {
 
     var requestList: MutableList<Request> =
         mutableListOf(
-            Request("AH4", mutableListOf("CH5","CH7"),null,"Shashank Rana")
+            Request("AH-4",123, mutableListOf(Pair("CH-7",IntRange(1,400))),"","")
         )
 }

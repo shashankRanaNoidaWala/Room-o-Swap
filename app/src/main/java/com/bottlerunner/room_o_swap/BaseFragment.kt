@@ -16,7 +16,7 @@ import com.google.firebase.auth.FirebaseAuth
 
 open class BaseFragment(var layoutId: Int) : Fragment() {
 
-    lateinit var currContext:Context
+    open lateinit var currContext:Context
     private lateinit var mProgressDialog:Dialog
     private var doubleBackToExitPressedOnce:Boolean =false
 

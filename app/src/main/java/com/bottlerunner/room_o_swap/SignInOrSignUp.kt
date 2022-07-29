@@ -12,7 +12,6 @@ import com.bottlerunner.room_o_swap.databinding.FragmentSignInOrSignUpBinding
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.GoogleApi
 import com.google.android.gms.common.api.GoogleApiClient
-import com.google.android.gms.common.internal.AuthAccountRequest
 
 
 class SignInOrSignUp : Fragment() {

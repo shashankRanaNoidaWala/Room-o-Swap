@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bottlerunner.room_o_swap.databinding.FragmentHomeBinding
 
@@ -25,6 +26,11 @@ class HomeFragment : Fragment() {
         binding.rvMatchesAvailable.adapter = RequestAdapter(currContext, Database.requestList)
 
         binding.rvMatchesAvailable.layoutManager = LinearLayoutManager(currContext)
+
+        binding.btnAddRequest.setOnClickListener{
+            Navigation.findNavController(view!!).navigate(R.id.action_homeFragment_to_addRequestFragment)
+
+        }
 
         return binding.root
     }
