@@ -6,10 +6,12 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bottlerunner.room_o_swap.databinding.FragmentHomeBinding
+import com.google.firebase.auth.FirebaseAuth
 
 class HomeFragment : Fragment() {
 
@@ -22,6 +24,9 @@ class HomeFragment : Fragment() {
     ): View? {
 
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_home,container,false)
+
+        val tvDrawerNameHeader: TextView? = view?.findViewById(R.id.tvNameHeader)
+        tvDrawerNameHeader?.text = FirebaseAuth.getInstance().currentUser?.displayName
 
         binding.rvMatchesAvailable.adapter = RequestAdapter(currContext, Database.requestList)
 

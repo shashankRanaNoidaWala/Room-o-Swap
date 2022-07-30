@@ -10,6 +10,7 @@ import android.widget.Toast
 import androidx.core.view.get
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
+import com.bottlerunner.room_o_swap.Database.userList
 import com.bottlerunner.room_o_swap.databinding.FragmentHomeBinding
 import com.bottlerunner.room_o_swap.databinding.FragmentSignInOrSignUpBinding
 import com.bottlerunner.room_o_swap.databinding.FragmentSignUpBinding
@@ -54,31 +55,48 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
         super.onAttach(context)
     }
 
-    fun signUpUser(name:String, email: String, password: String, hostel:String,roomNo: Int){
-        Toast.makeText(currContext,"Darling darling stand, stand by me, stand, stand by, stand by me, stand by me, stand by me",
-            Toast.LENGTH_LONG).show()
+    fun signUpUser(name:String, email: String, password: String, hostel:String,roomNo: Int) {
+        Toast.makeText(
+            currContext,
+            "Darling darling stand, stand by me, stand, stand by, stand by me, stand by me, stand by me",
+            Toast.LENGTH_LONG
+        ).show()
         showProgressDialog("Thamba thamba")
-        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email,password).addOnCompleteListener {      //This is lamda function
-            hideProgressDialog()                                                                                        //Know how to make it a regular one
-            if (it.isSuccessful) {
-                val firebaseUser = it.result!!.user!!
-                val registeredEmail = firebaseUser.email!!
-                Toast.makeText(
-                    currContext,
-                    "${firebaseUser.displayName} you have successfully signed un",
-                    Toast.LENGTH_SHORT
-                ).show()
+        FirebaseAuth.getInstance().createUserWithEmailAndPassword(email, password)
+            .addOnCompleteListener {      //This is lamda function
+                hideProgressDialog()                                                                                        //Know how to make it a regular one
+                if (it.isSuccessful) {
+                    val firebaseUser = it.result!!.user!!
+                    val registeredEmail = firebaseUser.email!!
+                    Toast.makeText(
+                        currContext,
+                        "${firebaseUser.displayName} you have successfully signed un",
+                        Toast.LENGTH_SHORT
+                    ).show()
 
-                val currUser = UserApna(firebaseUser.uid,name,email, password, hostel, roomNo,mutableListOf(Database.requestList[0]))
-                FirebaseFirestore.getInstance().collection("users")
-                    .document(firebaseUser.uid).set(currUser).addOnSuccessListener {
-                    Toast.makeText(currContext,"Added successfully",Toast.LENGTH_SHORT).show()
+                    val currUser = UserApna(
+                        firebaseUser.uid,
+                        name,
+                        email,
+                        password,
+                        hostel,
+                        roomNo,
+                        mutableListOf(Database.requestList[0])
+                    )
+                    userList.add(currUser)
+//                FirebaseFirestore.getInstance().collection("users")
+//                    .document(firebaseUser.uid).set(currUser).addOnSuccessListener {
+
+                    //TODO:FIX FIREBASEFIRESTORE ZIT
+//
+//                    Toast.makeText(currContext,"Added successfully",Toast.LENGTH_SHORT).show()
+//                }
+//
+//            } else {
+//                Toast.makeText(currContext, it.exception?.message, Toast.LENGTH_SHORT).show()
+//            }
                 }
-
-            } else {
-                Toast.makeText(currContext, it.exception?.message, Toast.LENGTH_SHORT).show()
             }
-        }
     }
 
     private fun validateForm(name:String,email: String, password: String,roomNo: Int): Boolean{
