@@ -23,7 +23,12 @@ class RequestAdapter(var context: Context, var history: MutableList<Request>)
         val tv_to_card: TextView = holder.itemView.findViewById(R.id.tv_to_card)
 
         tv_from_card.text = Database.requestList[position].fromHostel
-        tv_to_card.text = Database.requestList[position].toHostel.first
+
+        var textOfToHostel :String =""
+        for(i in Database.requestList[position].toHostelList[0].first){
+            textOfToHostel= textOfToHostel + i +"\n"
+        }
+        tv_to_card.text = textOfToHostel
 
     }
 
