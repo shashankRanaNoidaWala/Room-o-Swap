@@ -1,14 +1,17 @@
 package com.bottlerunner.room_o_swap
 
+import android.content.Context
+import android.widget.Toast
 import com.bottlerunner.room_o_swap.data.UserApna
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.ktx.toObjects
 
 object Database {
 
     var requestList: MutableList<Request> =
         mutableListOf()
 
-    var userList: MutableList<UserApna> = mutableListOf( UserApna("QRl6gkWBrDhgjKRyONr91Yh9pqL2","Vladimir Putin"
-        ,"vladimirputin@cykablyat.ussr","cykablyat","AH-4",123,mutableListOf()))
+    var userList: MutableList<UserApna> = mutableListOf()
 
     fun findUserById(id: String):UserApna?{
 
@@ -27,5 +30,21 @@ object Database {
             }
         }
         return null
+    }
+
+    fun getUserList(context: Context){
+        FirebaseFirestore.getInstance().collection("users").get().addOnCompleteListener{
+            it->
+            if(it.isSuccessful){
+                userList= it.result.toObjects<UserApna>().toMutableList()
+            }
+            else{
+                Toast.makeText(context,it.exception.toString(),Toast.LENGTH_SHORT).show()
+            }
+        }
+
+        fun onSucessLister(){
+            return
+        }
     }
 }
