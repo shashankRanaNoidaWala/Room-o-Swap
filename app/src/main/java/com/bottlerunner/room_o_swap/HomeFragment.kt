@@ -15,10 +15,9 @@ import com.bottlerunner.room_o_swap.databinding.FragmentHomeBinding
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.firestore.ktx.toObjects
 
-class HomeFragment : Fragment() {
+class HomeFragment : BaseFragment(R.layout.fragment_home) {
 
     private lateinit var binding:FragmentHomeBinding
-    private lateinit var currContext:Context
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -27,33 +26,45 @@ class HomeFragment : Fragment() {
 
         binding=DataBindingUtil.inflate(inflater,R.layout.fragment_home,container,false)
 
-        binding.rvMatchesAvailable.adapter = RequestAdapter(currContext, Database.requestList)
-
-        binding.rvMatchesAvailable.layoutManager = LinearLayoutManager(currContext)
-
         binding.btnAddRequest.setOnClickListener{
             Navigation.findNavController(view!!).navigate(R.id.action_homeFragment_to_addRequestFragment)
 
         }
 
-        FirebaseFirestore.getInstance().collection("users")
-            .get().addOnCompleteListener{
-                it->
-            if(it.isSuccessful){                                                    //TODO: oh git!, unable to deserialise yet again
-//                Database.userList = it.result.toObjects<UserApna>().toMutableList()
-//                binding.tvRvHeader.text = Database.userList.toString()
-            }
-            else{
-                Toast.makeText(context,it.exception.toString(), Toast.LENGTH_SHORT).show()
-            }
-        }
-
         return binding.root
     }
 
-    override fun onAttach(context: Context) {
-        currContext = context
-        super.onAttach(context)
+    override fun onStart() {
+
+        showProgressDialog("Loading requests please wait")
+        FirebaseFirestore.getInstance().collection("users")
+            .get().addOnCompleteListener{
+                    it->
+                if(it.isSuccessful){                                                    //TODO: oh git!, unable to deserialise yet again
+                    Database.userList = it.result.toObjects<UserApna>().toMutableList()
+                    for( i in Database.userList){
+                        if(i.requestList.size !=0){
+                            for(j in i.requestList)
+                                Database.requestList.add(j)
+                        }
+                    }
+
+                    binding.rvMatchesAvailable.adapter = RequestAdapter(currContext, Database.requestList)
+
+                    binding.rvMatchesAvailable.layoutManager = LinearLayoutManager(currContext)
+
+
+                }
+                else{
+                    Toast.makeText(MainActivity(),it.exception.toString(), Toast.LENGTH_SHORT).show()
+                }
+
+                hideProgressDialog()
+
+            }
+
+        super.onStart()
     }
+
 
 }

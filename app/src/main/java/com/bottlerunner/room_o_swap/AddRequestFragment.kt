@@ -56,11 +56,7 @@ class AddRequestFragment : BaseFragment(R.layout.fragment_add_request) {
                             currUser?.let {                             //had a curr user, added request
                                 it.requestList.add(
                                     Request(
-                                        it.hostel,
-                                        it.roomNo,
-                                        selectedHostel,
-                                        it.id,
-                                        it.name
+                                        it.hostel,it.roomNo,selectedHostel,roomRange.first,roomRange.second,it.id,it.name
                                     )
                                 )
 

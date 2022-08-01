@@ -31,20 +31,4 @@ object Database {
         }
         return null
     }
-
-    fun getUserList(context: Context){
-        FirebaseFirestore.getInstance().collection("users").get().addOnCompleteListener{
-            it->
-            if(it.isSuccessful){
-                userList= it.result.toObjects<UserApna>().toMutableList()
-            }
-            else{
-                Toast.makeText(context,it.exception.toString(),Toast.LENGTH_SHORT).show()
-            }
-        }
-
-        fun onSucessLister(){
-            return
-        }
-    }
 }
