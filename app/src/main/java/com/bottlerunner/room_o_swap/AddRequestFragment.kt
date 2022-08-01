@@ -58,7 +58,7 @@ class AddRequestFragment : BaseFragment(R.layout.fragment_add_request) {
                                     Request(
                                         it.hostel,
                                         it.roomNo,
-                                        Pair(selectedHostel, roomRange),
+                                        selectedHostel,
                                         it.id,
                                         it.name
                                     )

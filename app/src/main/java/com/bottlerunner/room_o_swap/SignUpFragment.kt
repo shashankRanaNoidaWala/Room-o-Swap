@@ -70,7 +70,7 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
                     val registeredEmail = firebaseUser.email!!
                     Toast.makeText(
                         currContext,
-                        "${firebaseUser.displayName} you have successfully signed un",
+                        "${firebaseUser.email} you have successfully signed un",
                         Toast.LENGTH_SHORT
                     ).show()
 

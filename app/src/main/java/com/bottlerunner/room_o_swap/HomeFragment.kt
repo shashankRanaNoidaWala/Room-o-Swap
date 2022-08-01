@@ -40,8 +40,8 @@ class HomeFragment : Fragment() {
             .get().addOnCompleteListener{
                 it->
             if(it.isSuccessful){                                                    //TODO: oh git!, unable to deserialise yet again
-                Database.userList = it.result.toObjects<UserApna>().toMutableList()
-                binding.tvRvHeader.text = Database.userList.toString()
+//                Database.userList = it.result.toObjects<UserApna>().toMutableList()
+//                binding.tvRvHeader.text = Database.userList.toString()
             }
             else{
                 Toast.makeText(context,it.exception.toString(), Toast.LENGTH_SHORT).show()
