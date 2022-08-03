@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import com.bottlerunner.room_o_swap.data.UserApna
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.toObjects
 
 object Database {
@@ -12,6 +13,9 @@ object Database {
         mutableListOf()
 
     var userList: MutableList<UserApna> = mutableListOf()
+
+    var matchList: MutableList<Request> = mutableListOf()
+
 
     fun findUserById(id: String):UserApna?{
 
@@ -31,4 +35,39 @@ object Database {
         }
         return null
     }
+
+    fun makeMatchList(user: UserApna):MutableList<Request>{
+
+        var matchList: MutableList<Request> = mutableListOf()
+        for(i in Database.userList){
+            if(matchUsers(user, i) !=null){
+                matchList.add(matchUsers(user,i)!!)
+            }
+        }
+        return matchList
+    }
+
+    fun matchUsers(userMe: UserApna, user2: UserApna):Request?{
+
+        var foundInUserMe=false
+        for(i in userMe.requestList){
+            if(i.toHostel == user2.hostel && (i.toHostelRoomNoLower <= user2.roomNo
+                        && user2.roomNo <= i.toHostelRoomNoUpper)){
+                foundInUserMe=true
+                break
+                }
+        }
+
+        if(foundInUserMe){
+            for(i in user2.requestList){
+                if(i.toHostel == userMe.hostel && (i.toHostelRoomNoLower <= userMe.roomNo
+                            && userMe.roomNo <= i.toHostelRoomNoUpper)){
+                    return i;
+                }
+            }
+        }
+        return null
+    }
+
+
 }

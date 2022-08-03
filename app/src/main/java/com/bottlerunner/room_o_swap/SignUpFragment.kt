@@ -39,9 +39,9 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
             var password = binding.tietPasswordSignUp.text.toString()
             var hostel = binding.sHostel.selectedItem.toString()
             var roomNo = binding.tietRoomNo.text.toString().toInt()
-
-            if(validateForm(name, email, password,roomNo)){
-                signUpUser(name,email,password,hostel,roomNo)
+            var phoneNo = binding.tietPhoneNo.text.toString()
+            if(validateForm(name, email, password,roomNo,phoneNo)){
+                signUpUser(name,email,password,hostel,roomNo,phoneNo)
                 Navigation.findNavController(view!!).navigate(R.id.action_signUpFragment_to_homeFragment)
             }
 
@@ -55,7 +55,7 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
         super.onAttach(context)
     }
 
-    fun signUpUser(name:String, email: String, password: String, hostel:String,roomNo: Int) {
+    fun signUpUser(name:String, email: String, password: String, hostel:String,roomNo: Int,phoneNo: String) {
         Toast.makeText(
             currContext,
             "Darling darling stand, stand by me, stand, stand by, stand by me, stand by me, stand by me",
@@ -74,7 +74,7 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
                         Toast.LENGTH_SHORT
                     ).show()
 
-                    val currUser = UserApna(firebaseUser.uid,name, email,password, hostel, roomNo, mutableListOf())
+                    val currUser = UserApna(firebaseUser.uid,name, email,password, hostel, roomNo, mutableListOf(),phoneNo)
 
                     FirebaseFirestore.getInstance().collection("users")
                         .document(firebaseUser.uid).set(currUser).addOnSuccessListener {
@@ -88,7 +88,7 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
             }
     }
 
-    private fun validateForm(name:String,email: String, password: String,roomNo: Int): Boolean{
+    private fun validateForm(name:String,email: String, password: String,roomNo: Int, phoneNo: String): Boolean{
 
         if(name.length == 0){
             showError("Please enter a valid email")
@@ -105,6 +105,9 @@ class SignUpFragment : BaseFragment(R.layout.fragment_sign_up) {
         }
         if(roomNo<1 || roomNo>1000){
             showError("Try living inside the hostel")
+            return false
+        }
+        if(phoneNo.length != 10){
             return false
         }
         return true

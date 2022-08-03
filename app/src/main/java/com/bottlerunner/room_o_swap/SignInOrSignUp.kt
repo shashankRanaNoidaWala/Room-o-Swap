@@ -25,13 +25,12 @@ class SignInOrSignUp : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
-
         binding = DataBindingUtil.inflate(inflater
             ,R.layout.fragment_sign_in_or_sign_up,container,false)
 
-        if(FirebaseAuth.getInstance().currentUser!= null){
-            Navigation.findNavController(view!!).navigate(R.id.action_signInOrSignUp_to_homeFragment)
-        }
+//        if(FirebaseAuth.getInstance().currentUser!= null){
+//            Navigation.findNavController(view!!).navigate(R.id.action_signInOrSignUp_to_homeFragment)
+//        }
 
         binding.btnSignUp.setOnClickListener {
 
