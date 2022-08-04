@@ -1,8 +1,6 @@
 package com.bottlerunner.room_o_swap
 
-import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -10,6 +8,7 @@ import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bottlerunner.room_o_swap.data.RequestAdapter
 import com.bottlerunner.room_o_swap.data.UserApna
 import com.bottlerunner.room_o_swap.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
@@ -96,9 +95,8 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                     matchList = Database.makeMatchList(currUser)
                 }
             }                                           //adding stuff in your matches
-            binding.rvYourMatches.adapter = RequestAdapter(currContext, matchList)
-            binding.rvMatchesAvailable.layoutManager = LinearLayoutManager(currContext)
-            binding.tvRvHeader.text = matchList.toString()
+            binding.rvYourMatches.adapter = MatchAdapter(currContext, matchList)
+            binding.rvYourMatches.layoutManager = LinearLayoutManager(currContext)
 
         }
 
@@ -143,10 +141,8 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
             }
         }                                           //adding stuff in your matches
 
-        binding.tvRvHeader.text = matchList.toString()
-        binding.rvYourMatches.adapter = RequestAdapter(currContext, matchList)
-        binding.rvMatchesAvailable.layoutManager = LinearLayoutManager(currContext)
-
+        binding.rvYourMatches.adapter = MatchAdapter(currContext, matchList)
+        binding.rvYourMatches.layoutManager = LinearLayoutManager(currContext)
         super.onStart()
     }
 

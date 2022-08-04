@@ -28,7 +28,7 @@ object Database {
     }
 
     fun findIndexById(id: String):Int?{
-        for( i in 1..userList.size ){
+        for( i in 0..(userList.size-1) ){
             if(userList[i].id ==id){
                 return i
             }
@@ -68,6 +68,4 @@ object Database {
         }
         return null
     }
-
-
 }

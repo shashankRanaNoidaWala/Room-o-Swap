@@ -5,6 +5,10 @@
     <item android:title="Sign Out" />
 
     <item
+        android:id="@+id/myRequestsFragment"
+        android:icon="@drawable/ic_shifting"
+        android:title="My Requests" />
+    <item
         android:id="@+id/helpFragment"
         android:title="Help" />
     <item
