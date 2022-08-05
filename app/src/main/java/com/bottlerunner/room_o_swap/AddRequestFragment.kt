@@ -23,9 +23,25 @@ class AddRequestFragment : BaseFragment(R.layout.fragment_add_request) {
         savedInstanceState: Bundle?
     ): View? {
 
+
+
         val binding = DataBindingUtil.inflate<FragmentAddRequestBinding>(
             inflater, R.layout.fragment_add_request, container, false
         )
+
+        var currUserId = FirebaseAuth.getInstance().currentUser?.uid
+        var currUser: UserApna?
+
+        currUserId?.let { it1 ->
+            Log.d("DebugRequestGenerated", "Request generated line 49")
+            FirebaseFirestore.getInstance().collection("users")
+                .document(it1).get().addOnCompleteListener { it2 ->
+                    if (it2.isSuccessful) {
+                        currUser = it2.result.toObject<UserApna>()
+                        binding.tvIamAt.text = currUser?.name!!
+                    }
+                }
+        }
 
         if (FirebaseAuth.getInstance().currentUser == null) {
             makeText(currContext, "currUser is null", Toast.LENGTH_SHORT).show()
