@@ -14,9 +14,8 @@ import com.bottlerunner.room_o_swap.Request
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 
-class MyRequestAdapter(var context: Context, var myRequestList: MutableList<Request>                //remember that as Database is an object, all the stuff derived from it
-    , var currUser: UserApna, var currUserTest: UserApna)                                           //is pass by refernce. There fore if something is changed anywhere on thing which had some bussiness
-    : RecyclerView.Adapter<MyRequestAdapter.MyRequestViewHolder>() {                                //with database, it's value in database will change as well. Continues at bottom
+class MyRequestAdapter(var context: Context, var myRequestList: MutableList<Request>, var currUser: UserApna, var currUserTest: UserApna)
+    : RecyclerView.Adapter<MyRequestAdapter.MyRequestViewHolder>() {
 
     inner class MyRequestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView)
 
@@ -35,13 +34,19 @@ class MyRequestAdapter(var context: Context, var myRequestList: MutableList<Requ
         tvToHotelRoomNoMyRequestCard.text = myRequestList[position].toHostelRoomNoLower.toString()+ "-" + myRequestList[position].toHostelRoomNoUpper.toString()
 
         ivDelete.setOnClickListener {
-            currUser.requestList.removeAt(position)                                                 //removed from the list
+
+            val userIndex = Database.findIndexById(currUser.id)
+            Database.userList[userIndex!!].requestList.removeAt(position)                           //removed from cache
+//            currUser.requestList.removeAt(position)                                                 //removed from the list
+            Log.d("tag1",currUser.requestList.toString())
+            Log.d("tag2",currUserTest.requestList.toString())
+
             FirebaseFirestore.getInstance().collection("users")
                 .document(currUser.id).set(currUser)                                                //pushed to the cloud
+
+//            myRequestList.removeAt(position)                                                        //removed from myRequestList
             notifyItemRemoved(position)
             notifyItemRangeChanged(position,myRequestList.size)
-
-            //see footnote
         }
     }
 
@@ -49,8 +54,3 @@ class MyRequestAdapter(var context: Context, var myRequestList: MutableList<Requ
         return myRequestList.size
     }
 }
-
-//If we had user1= Database.findUserById(Firestore.currentUser.uid)
-//and user2 = Database.findUserById(--""--)
-//and do user1.requestList.removeAt(0)
-//the same thing will be removed from user2 too.

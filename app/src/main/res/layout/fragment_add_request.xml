@@ -8,112 +8,76 @@
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:context=".AddRequestFragment"
-        android:padding="10dp">
+        android:layout_height="match_parent"
+        tools:context=".AddRequestFragment">
 
         <TextView
             android:id="@+id/tvIamAt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="I am at"
-            android:textSize="18sp"
+            android:text="Hello, I am at..."
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.1"
+            app:layout_constraintHorizontal_bias="0.196"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.063" />
+            app:layout_constraintVertical_bias="0.054" />
 
         <TextView
             android:id="@+id/tvCurrHostel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
+            android:layout_marginStart="69dp"
+            android:layout_marginTop="49dp"
             android:text="AH-4"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView4"
-            app:layout_constraintStart_toEndOf="@+id/imageView4"
-            app:layout_constraintTop_toTopOf="@+id/imageView4" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvIamAt" />
 
         <TextView
             android:id="@+id/tvIWantToGoTo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="48dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="53dp"
             android:text="and I want to go to..."
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+            app:layout_constraintTop_toBottomOf="@+id/tvCurrHostel" />
 
         <Spinner
             android:id="@+id/sToHostel"
-            android:layout_width="100sp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="36dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginStart="34dp"
+            android:layout_marginTop="52dp"
             android:entries="@array/hostels"
             android:padding="5dp"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView5"
-            app:layout_constraintStart_toEndOf="@+id/imageView5"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvIWantToGoTo" />
 
         <com.google.android.material.slider.RangeSlider
             android:id="@+id/rangeSlider"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="10dp"
-            android:layout_marginTop="40dp"
-            android:layout_marginBottom="100dp"
+            android:layout_marginTop="81dp"
             android:stepSize="1.0"
             android:valueFrom="0.0"
             android:valueTo="400.0"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.238"
-            app:layout_constraintStart_toEndOf="@+id/imageView6"
-            app:layout_constraintTop_toBottomOf="@+id/imageView5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sToHostel"
             app:values="@array/initial_slider_values" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fabAdd"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="52dp"
-            android:layout_marginBottom="28dp"
+            android:layout_marginEnd="48dp"
+            android:layout_marginBottom="44dp"
             android:textColor="@color/white"
             app:icon="@drawable/ic_baseline_done_24"
             app:iconTint="@color/white"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView4"
-            android:layout_width="30sp"
-            android:layout_height="30sp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvIamAt"
-            app:srcCompat="@drawable/ic_baseline_home_24" />
-
-        <ImageView
-            android:id="@+id/imageView5"
-            android:layout_width="30sp"
-            android:layout_height="30sp"
-            android:layout_marginStart="32dp"
-            android:layout_marginTop="24dp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvIWantToGoTo"
-            app:srcCompat="@drawable/ic_to_hostel" />
-
-        <ImageView
-            android:id="@+id/imageView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="@+id/rangeSlider"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/rangeSlider"
-            app:srcCompat="@drawable/ic_room_no" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
