@@ -19,12 +19,14 @@ class MatchAdapter(var context: Context, var matchList: MutableList<Request>)
 
     override fun onBindViewHolder(holder: MatchViewHolder, position: Int) {
 
+        val tvName: TextView = holder.itemView.findViewById(R.id.tvNameMatchCard)
         val tvFromHostelMatchCard: TextView = holder.itemView.findViewById(R.id.tvFromHostelMatchCard)
         val tvFromHostelRoomNoMatchCard: TextView = holder.itemView.findViewById(R.id.tvFromHostelRoomNoMatchCard)
         val tvToHostelMatchCard: TextView = holder.itemView.findViewById(R.id.tvToHostelMatchCard)
         val tvToHotelRoomNoMatchCard: TextView = holder.itemView.findViewById(R.id.tvToHotelRoomNoMatchCard)
         val tvPhoneNoMatchCard: TextView = holder.itemView.findViewById(R.id.tvPhoneNoMatchCard)
 
+        tvName.text = matchList[position].name
         tvFromHostelMatchCard.text = matchList[position].fromHostel
         tvFromHostelRoomNoMatchCard.text= matchList[position].currRoomNo.toString()
         tvToHostelMatchCard.text = matchList[position].toHostel

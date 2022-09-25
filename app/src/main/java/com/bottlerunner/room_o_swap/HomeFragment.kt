@@ -91,11 +91,9 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                                 Toast.LENGTH_SHORT
                             ).show()
                         } else {
-                            Toast.makeText(currContext,currUser.name + " , "+ R.string.cyka_blyat.toString(),Toast.LENGTH_SHORT)
+                            Toast.makeText(currContext,currUser.name + " , "+ R.string.cyka_blyat.toString()
+                                ,Toast.LENGTH_SHORT)
                             matchList = Database.makeMatchList(currUser)
-                            if( matchList.isEmpty()){
-                                matchList.add(Request("NULL",0,"NULL",0,0,"NULL","Ilych","100"))
-                            }
                         }
                     }                         //adding stuff in your matches
                     binding.rvYourMatches.adapter = MatchAdapter(currContext, matchList)
