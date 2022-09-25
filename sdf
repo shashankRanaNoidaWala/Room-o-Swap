@@ -1,0 +1,79 @@
+[1mdiff --git a/app/build.gradle b/app/build.gradle[m
+[1mindex 39b7f4f..a1c2d69 100644[m
+[1m--- a/app/build.gradle[m
+[1m+++ b/app/build.gradle[m
+[36m@@ -35,9 +35,9 @@[m [mandroid {[m
+     dataBinding{[m
+         android.buildFeatures.dataBinding=true[m
+     }[m
+[31m-    buildFeatures {[m
+[31m-        viewBinding true[m
+[31m-    }[m
+[32m+[m[32m//    buildFeatures {[m
+[32m+[m[32m//        viewBinding true[m
+[32m+[m[32m//    }[m
+ }[m
+ [m
+ [m
+[1mdiff --git a/app/src/main/java/com/bottlerunner/room_o_swap/AddRequestFragment.kt b/app/src/main/java/com/bottlerunner/room_o_swap/AddRequestFragment.kt[m
+[1mindex 6e2c0f9..e9f4b30 100644[m
+[1m--- a/app/src/main/java/com/bottlerunner/room_o_swap/AddRequestFragment.kt[m
+[1m+++ b/app/src/main/java/com/bottlerunner/room_o_swap/AddRequestFragment.kt[m
+[36m@@ -78,6 +78,7 @@[m [mclass AddRequestFragment : BaseFragment(R.layout.fragment_add_request) {[m
+                                                 it3.exception.toString(),[m
+                                                 Toast.LENGTH_SHORT[m
+                                             ).show()[m
+[32m+[m[32m                                            Log.d("Error",it3.exception.toString())[m
+                                         }[m
+                                     }[m
+                             }[m
+[36m@@ -87,6 +88,7 @@[m [mclass AddRequestFragment : BaseFragment(R.layout.fragment_add_request) {[m
+                                 it2.exception.toString(),[m
+                                 Toast.LENGTH_SHORT[m
+                             ).show()[m
+[32m+[m[32m                            Log.d("Error",it2.exception.toString())[m
+                         }[m
+                     }[m
+             }[m
+[1mdiff --git a/app/src/main/java/com/bottlerunner/room_o_swap/HomeFragment.kt b/app/src/main/java/com/bottlerunner/room_o_swap/HomeFragment.kt[m
+[1mindex 0a78099..28b2847 100644[m
+[1m--- a/app/src/main/java/com/bottlerunner/room_o_swap/HomeFragment.kt[m
+[1m+++ b/app/src/main/java/com/bottlerunner/room_o_swap/HomeFragment.kt[m
+[36m@@ -60,6 +60,8 @@[m [mclass HomeFragment : BaseFragment(R.layout.fragment_home) {[m
+             FirebaseFirestore.getInstance().collection("users")         //gets the latest data and puts it in rv[m
+                 .get().addOnCompleteListener { it ->[m
+                     if (it.isSuccessful) {                                                    //TODO: oh git!, unable to deserialise yet again[m
+[32m+[m[32m                        Database.userList.clear()[m
+[32m+[m[32m                        Database.requestList.clear()[m
+                         Database.userList = it.result.toObjects<UserApna>().toMutableList()[m
+                         for (i in Database.userList) {[m
+                             if (i.requestList.size != 0) {[m
+[36m@@ -110,6 +112,8 @@[m [mclass HomeFragment : BaseFragment(R.layout.fragment_home) {[m
+             .get().addOnCompleteListener{[m
+                     it->[m
+                 if(it.isSuccessful){                                                    //TODO: oh git!, unable to deserialise yet again[m
+[32m+[m[32m                    Database.userList.clear()[m
+[32m+[m[32m                    Database.requestList.clear()[m
+                     Database.userList = it.result.toObjects<UserApna>().toMutableList()[m
+                     for( i in Database.userList){[m
+                         if(i.requestList.size !=0){[m
+[36m@@ -121,7 +125,7 @@[m [mclass HomeFragment : BaseFragment(R.layout.fragment_home) {[m
+                     binding.rvMatchesAvailable.layoutManager = LinearLayoutManager(currContext)[m
+                 }[m
+                 else{[m
+[31m-                    Toast.makeText(MainActivity(),it.exception.toString(), Toast.LENGTH_SHORT).show()[m
+[32m+[m[32m                    //Toast.makeText(MainActivity(),it.exception.toString(), Toast.LENGTH_SHORT).show()[m
+                 }[m
+ [m
+                 hideProgressDialog()[m
+[36m@@ -146,9 +150,4 @@[m [mclass HomeFragment : BaseFragment(R.layout.fragment_home) {[m
+         super.onStart()[m
+     }[m
+ [m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+[31m-[m
+ }[m
+\ No newline at end of file[m

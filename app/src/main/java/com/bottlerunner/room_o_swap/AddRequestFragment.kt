@@ -78,6 +78,7 @@ class AddRequestFragment : BaseFragment(R.layout.fragment_add_request) {
                                                 it3.exception.toString(),
                                                 Toast.LENGTH_SHORT
                                             ).show()
+                                            Log.d("Error",it3.exception.toString())
                                         }
                                     }
                             }
@@ -87,6 +88,7 @@ class AddRequestFragment : BaseFragment(R.layout.fragment_add_request) {
                                 it2.exception.toString(),
                                 Toast.LENGTH_SHORT
                             ).show()
+                            Log.d("Error",it2.exception.toString())
                         }
                     }
             }

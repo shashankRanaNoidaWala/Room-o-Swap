@@ -15,4 +15,5 @@
     <string name="invalid_password">Password must be >5 characters</string>
     <string name="login_failed">"Login failed"</string>
     <string name="requesting_patience">o re user, ruk ja thahar ja</string>
+    <string name="cyka_blyat">сука блять</string>
 </resources>
