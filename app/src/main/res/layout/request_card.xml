@@ -18,8 +18,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="10dp"
-        >
+        android:padding="10dp">
 
 
         <TextView
@@ -27,28 +26,38 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="From"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/ivToArrow"
             app:layout_constraintHorizontal_chainStyle="spread"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="@+id/ivToArrow" />
 
         <ImageView
             android:id="@+id/ivToArrow"
             android:layout_width="30dp"
             android:layout_height="30dp"
+            android:layout_marginTop="10dp"
             android:src="@drawable/ic_baseline_arrow_right_alt_24"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/tv_to_card"
-            app:layout_constraintStart_toEndOf="@+id/tv_from_card"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvNameRequestCard" />
 
         <TextView
             android:id="@+id/tv_to_card"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="TextView"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toBottomOf="@+id/ivToArrow"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/ivToArrow" />
+
+        <TextView
+            android:id="@+id/tvNameRequestCard"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="@+id/tv_to_card"
+            app:layout_constraintStart_toStartOf="@+id/tv_from_card"
             app:layout_constraintTop_toTopOf="parent" />
 
 

@@ -9,7 +9,6 @@ var email: String = "",
 var password:String ="",
 var hostel:String="",
 var roomNo:Int=0,
-var requestList: MutableList<Request> = mutableListOf(
-    Request("AH-4",123, Pair("CH-5",Pair(1,300)),id,name))
-
+var requestList: MutableList<Request> = mutableListOf<Request>(),
+var phoneNo: String = "0"
 )

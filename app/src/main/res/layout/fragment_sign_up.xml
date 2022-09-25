@@ -57,9 +57,7 @@
                 android:id="@+id/tietEmail"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
                 android:layout_marginTop="219dp"
-                android:layout_marginEnd="6dp"
                 android:layout_marginBottom="45dp"
                 app:helperText="Hello Frands"
                 app:layout_constraintBottom_toTopOf="@+id/textInputLayout2"
@@ -76,14 +74,15 @@
                     android:inputType="textEmailAddress" />
             </com.google.android.material.textfield.TextInputLayout>
 
+
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textInputLayout2"
                 android:layout_width="372dp"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="92dp"
+                android:layout_marginTop="44dp"
                 app:helperText="Hello Frands"
-                app:layout_constraintBottom_toTopOf="@+id/sHostel"
                 app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.476"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/tietEmail"
                 app:startIconDrawable="@drawable/ic_lock">
@@ -96,29 +95,46 @@
                     android:inputType="textPassword" />
             </com.google.android.material.textfield.TextInputLayout>
 
+            <com.google.android.material.textfield.TextInputLayout
+                android:id="@+id/tilPhoneNo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="40dp"
+                app:helperText="Don't enter country code"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.476"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2"
+                app:startIconDrawable="@drawable/ic_phone_no">
+
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/tietPhoneNo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Phone number"
+                    android:inputType="phone" />
+            </com.google.android.material.textfield.TextInputLayout>
+
             <Spinner
                 android:id="@+id/sHostel"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="51dp"
-                android:layout_marginEnd="20dp"
-                android:layout_marginBottom="59dp"
+                android:layout_marginStart="32dp"
+                android:layout_marginTop="92dp"
                 android:entries="@array/hostels"
                 android:padding="5dp"
-                app:layout_constraintBottom_toTopOf="@+id/btnSignUpSignUpFrag"
-                app:layout_constraintEnd_toStartOf="@+id/textLayout3"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/textInputLayout2" />
+                app:layout_constraintTop_toBottomOf="@+id/tilPhoneNo" />
+
 
             <com.google.android.material.textfield.TextInputLayout
                 android:id="@+id/textLayout3"
-                android:layout_width="0dp"
+                android:layout_width="140dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="20dp"
-                android:layout_marginEnd="30dp"
+                android:layout_marginEnd="32dp"
+                app:helperText="grab em"
                 app:layout_constraintBottom_toBottomOf="@+id/sHostel"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/sHostel"
                 app:layout_constraintTop_toTopOf="@+id/sHostel">
 
                 <com.google.android.material.textfield.TextInputEditText
@@ -129,14 +145,15 @@
                     android:inputType="number" />
             </com.google.android.material.textfield.TextInputLayout>
 
-
             <Button
                 android:id="@+id/btnSignUpSignUpFrag"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="80dp"
                 android:text="Sign up"
-                app:layout_constraintBottom_toBottomOf="parent"
-                tools:layout_editor_absoluteX="20dp" />
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/textLayout3" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

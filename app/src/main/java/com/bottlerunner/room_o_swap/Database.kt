@@ -4,6 +4,7 @@ import android.content.Context
 import android.widget.Toast
 import com.bottlerunner.room_o_swap.data.UserApna
 import com.google.firebase.firestore.FirebaseFirestore
+import com.google.firebase.firestore.auth.User
 import com.google.firebase.firestore.ktx.toObjects
 
 object Database {
@@ -12,6 +13,9 @@ object Database {
         mutableListOf()
 
     var userList: MutableList<UserApna> = mutableListOf()
+
+    var matchList: MutableList<Request> = mutableListOf()
+
 
     fun findUserById(id: String):UserApna?{
 
@@ -24,7 +28,7 @@ object Database {
     }
 
     fun findIndexById(id: String):Int?{
-        for( i in 1..userList.size ){
+        for( i in 0..(userList.size-1) ){
             if(userList[i].id ==id){
                 return i
             }
@@ -32,19 +36,36 @@ object Database {
         return null
     }
 
-    fun getUserList(context: Context){
-        FirebaseFirestore.getInstance().collection("users").get().addOnCompleteListener{
-            it->
-            if(it.isSuccessful){
-                userList= it.result.toObjects<UserApna>().toMutableList()
+    fun makeMatchList(user: UserApna):MutableList<Request>{
+
+        var matchList: MutableList<Request> = mutableListOf()
+        for(i in Database.userList){
+            if(matchUsers(user, i) !=null){
+                matchList.add(matchUsers(user,i)!!)
             }
-            else{
-                Toast.makeText(context,it.exception.toString(),Toast.LENGTH_SHORT).show()
-            }
+        }
+        return matchList
+    }
+
+    fun matchUsers(userMe: UserApna, user2: UserApna):Request?{
+
+        var foundInUserMe=false
+        for(i in userMe.requestList){
+            if(i.toHostel == user2.hostel && (i.toHostelRoomNoLower <= user2.roomNo
+                        && user2.roomNo <= i.toHostelRoomNoUpper)){
+                foundInUserMe=true
+                break
+                }
         }
 
-        fun onSucessLister(){
-            return
+        if(foundInUserMe){
+            for(i in user2.requestList){
+                if(i.toHostel == userMe.hostel && (i.toHostelRoomNoLower <= userMe.roomNo
+                            && userMe.roomNo <= i.toHostelRoomNoUpper)){
+                    return i;
+                }
+            }
         }
+        return null
     }
 }

@@ -12,6 +12,7 @@ import com.bottlerunner.room_o_swap.databinding.FragmentSignInOrSignUpBinding
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions
 import com.google.android.gms.common.api.GoogleApi
 import com.google.android.gms.common.api.GoogleApiClient
+import com.google.firebase.auth.FirebaseAuth
 
 
 class SignInOrSignUp : Fragment() {
@@ -26,6 +27,10 @@ class SignInOrSignUp : Fragment() {
 
         binding = DataBindingUtil.inflate(inflater
             ,R.layout.fragment_sign_in_or_sign_up,container,false)
+
+//        if(FirebaseAuth.getInstance().currentUser!= null){
+//            Navigation.findNavController(view!!).navigate(R.id.action_signInOrSignUp_to_homeFragment)
+//        }
 
         binding.btnSignUp.setOnClickListener {
 
