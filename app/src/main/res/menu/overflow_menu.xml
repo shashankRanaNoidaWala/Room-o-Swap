@@ -1,16 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+<menu
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <item android:title="Sign Out" />
+    <item
+        android:id="@+id/signInOrSignUp"
+        android:icon="@drawable/logout"
+        android:title="Sign Out"
+        app:showAsAction="ifRoom" />
 
     <item
         android:id="@+id/myRequestsFragment"
         android:icon="@drawable/ic_shifting"
         android:title="My Requests" />
+
     <item
         android:id="@+id/helpFragment"
-        android:title="Help" />
+        android:icon="@drawable/help"
+        android:title="Help"
+        app:showAsAction="ifRoom" />
+
     <item
         android:id="@+id/aboutUsFragment"
         android:title="About Us" />

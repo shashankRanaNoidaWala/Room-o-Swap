@@ -19,10 +19,6 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
 
     private lateinit var email:String
     private lateinit var password: String
-    private lateinit var name :String
-    private lateinit var hostel: String
-    private var roomNo: Int = 0
-    private lateinit var tietName:TextInputEditText
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -43,7 +39,7 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
         return binding.root
     }
 
-    fun signInUser(email: String, password: String){
+    private fun signInUser(email: String, password: String){
         Toast.makeText(currContext,"Darling darling stand, stand by me, stand, stand by, stand by me, stand by me, stand by me",
             Toast.LENGTH_LONG).show()
         showProgressDialog("Thamba thamba")
@@ -67,11 +63,11 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
 
     private fun validateForm(email: String, password: String): Boolean{
 
-        if(email.length == 0){
+        if(email.isEmpty()){
             showError("Please enter a valid email")
             return true
         }
-        if(password.length == 0){
+        if(password.isEmpty()){
             showError("Please enter a valid password")
             return false
         }

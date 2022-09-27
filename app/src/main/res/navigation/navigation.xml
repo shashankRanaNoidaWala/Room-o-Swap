@@ -2,22 +2,8 @@
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:id="@+id/navigation"
-    app:startDestination="@id/signInOrSignUp">
+    app:startDestination="@id/homeFragment">
 
-    <fragment
-        android:id="@+id/signInOrSignUp"
-        android:name="com.bottlerunner.room_o_swap.SignInOrSignUp"
-        android:label="SignInOrSignUp" >
-        <action
-            android:id="@+id/action_signInOrSignUp_to_signUpFragment"
-            app:destination="@id/signUpFragment" />
-        <action
-            android:id="@+id/action_signInOrSignUp_to_signInFragment"
-            app:destination="@id/signInFragment" />
-        <action
-            android:id="@+id/action_signInOrSignUp_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
     <fragment
         android:id="@+id/homeFragment"
         android:name="com.bottlerunner.room_o_swap.HomeFragment"
@@ -31,6 +17,9 @@
         <action
             android:id="@+id/action_homeFragment_to_helpFragment"
             app:destination="@id/helpFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_signInOrSignUp"
+            app:destination="@id/signInOrSignUp" />
     </fragment>
     <fragment
         android:id="@+id/addRequestFragment"
@@ -49,13 +38,9 @@
         android:name="com.bottlerunner.room_o_swap.HelpFragment"
         android:label="HelpFragment" />
     <fragment
-        android:id="@+id/signUpFragment"
-        android:name="com.bottlerunner.room_o_swap.SignUpFragment"
-        android:label="SignUpFragment" >
-        <action
-            android:id="@+id/action_signUpFragment_to_homeFragment"
-            app:destination="@id/homeFragment" />
-    </fragment>
+        android:id="@+id/myRequestsFragment"
+        android:name="com.bottlerunner.room_o_swap.MyRequestsFragment"
+        android:label="MyRequestsFragment" />
     <fragment
         android:id="@+id/signInFragment"
         android:name="com.bottlerunner.room_o_swap.SignInFragment"
@@ -65,7 +50,22 @@
             app:destination="@id/homeFragment" />
     </fragment>
     <fragment
-        android:id="@+id/myRequestsFragment"
-        android:name="com.bottlerunner.room_o_swap.MyRequestsFragment"
-        android:label="MyRequestsFragment" />
+        android:id="@+id/signUpFragment"
+        android:name="com.bottlerunner.room_o_swap.SignUpFragment"
+        android:label="SignUpFragment" >
+        <action
+            android:id="@+id/action_signUpFragment_to_homeFragment"
+            app:destination="@id/homeFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/signInOrSignUp"
+        android:name="com.bottlerunner.room_o_swap.SignInOrSignUp"
+        android:label="SignInOrSignUp" >
+        <action
+            android:id="@+id/action_signInOrSignUp_to_signInFragment"
+            app:destination="@id/signInFragment" />
+        <action
+            android:id="@+id/action_signInOrSignUp_to_signUpFragment"
+            app:destination="@id/signUpFragment" />
+    </fragment>
 </navigation>

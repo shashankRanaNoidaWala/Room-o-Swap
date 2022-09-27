@@ -25,6 +25,8 @@ class SignInOrSignUp : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
 
+        FirebaseAuth.getInstance().signOut()
+
         binding = DataBindingUtil.inflate(inflater
             ,R.layout.fragment_sign_in_or_sign_up,container,false)
 

@@ -1,12 +1,12 @@
 package com.bottlerunner.room_o_swap
 
 import android.os.Bundle
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.Navigation
+import androidx.navigation.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bottlerunner.room_o_swap.data.RequestAdapter
 import com.bottlerunner.room_o_swap.data.UserApna
@@ -34,18 +34,30 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
             updateRVs()
         }
 
+        setHasOptionsMenu(true)
+
         return binding.root
     }
 
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        if(FirebaseAuth.getInstance().currentUser == null){
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_signInOrSignUp)
+        }
+        super.onViewCreated(view, savedInstanceState)
+    }
+
     override fun onStart() {
-
         updateRVs()
-
         super.onStart()
     }
 
+//    override fun onResume() {
+//        updateRVs()
+//        super.onResume()
+//    }
+
     fun updateRVs(){
-        showProgressDialog("Loading requests please wait")
+//        showProgressDialog("Loading requests please wait")
         FirebaseFirestore.getInstance().collection("users")         //gets the latest data and puts it in rv
             .get().addOnCompleteListener { it ->
                 if (it.isSuccessful) {                                                    //TODO: oh git!, unable to deserialise yet again
@@ -104,8 +116,19 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                         .show()
                 }
 
-                hideProgressDialog()
+//                hideProgressDialog()
             }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater.inflate(R.menu.overflow_menu,menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item!!,
+            view!!.findNavController())
+                || super.onOptionsItemSelected(item)
     }
 
 }
