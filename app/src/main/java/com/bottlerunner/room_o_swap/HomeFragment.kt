@@ -10,6 +10,7 @@ import androidx.navigation.Navigation
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bottlerunner.room_o_swap.data.RequestAdapter
 import com.bottlerunner.room_o_swap.data.UserApna
+import com.bottlerunner.room_o_swap.data.model.FirestoreClass
 import com.bottlerunner.room_o_swap.databinding.FragmentHomeBinding
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
@@ -37,8 +38,15 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         return binding.root
     }
 
-    override fun onStart() {
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
 
+        if(FirebaseAuth.getInstance().currentUser == null){
+            Navigation.findNavController(view).navigate(R.id.action_homeFragment_to_signInOrSignUp)
+        }
+        super.onViewCreated(view, savedInstanceState)
+    }
+
+    override fun onStart(){
         updateRVs()
 
         super.onStart()
@@ -48,7 +56,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         showProgressDialog("Loading requests please wait")
         FirebaseFirestore.getInstance().collection("users")         //gets the latest data and puts it in rv
             .get().addOnCompleteListener { it ->
-                if (it.isSuccessful) {                                                    //TODO: oh git!, unable to deserialise yet again
+                if (it.isSuccessful) {
                     Database.userList.clear()
                     Database.requestList.clear()
                     Database.userList = it.result.toObjects<UserApna>().toMutableList()
