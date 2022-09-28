@@ -1,5 +1,7 @@
 package com.bottlerunner.room_o_swap
 
+//TODO: fix on refresh functionality
+
 import android.os.Bundle
 import android.view.*
 import android.widget.Toast
@@ -70,10 +72,7 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                                 Database.requestList.add(j)
                         }
                     }
-
-                    binding.rvMatchesAvailable.adapter =
-                        RequestAdapter(currContext, Database.requestList)
-
+                    binding.rvMatchesAvailable.adapter =MatchAdapter(currContext, Database.requestList)
                     binding.rvMatchesAvailable.layoutManager = LinearLayoutManager(currContext)
 
                     FirebaseAuth.getInstance().currentUser?. let{
@@ -82,11 +81,14 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                         val currUserId = it1.uid
                         val user = Database.findUserById(currUserId)
                         if (user != null) {
-                            for(i in user.requestList){
-                                text1 = text1 + i.toHostel + "\n \n"
-                            }
-                        }
 
+                            var i = 0
+                            while( i < user.requestList.size -1){
+                                text1 = text1 + user.requestList[i].toHostel + "\n \n"
+                                i++
+                            }
+                            text1 += user.requestList[i].toHostel
+                        }
                         binding.tvToCardHome.text = text1
                         if (user != null) {
                             binding.tvFromCardHome.text = user.hostel
@@ -107,9 +109,17 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
                                 ,Toast.LENGTH_SHORT)
                             matchList = Database.makeMatchList(currUser)
                         }
-                    }                         //adding stuff in your matches
+                    }                         //adding stuff in your matchesRV
                     binding.rvYourMatches.adapter = MatchAdapter(currContext, matchList)
                     binding.rvYourMatches.layoutManager = LinearLayoutManager(currContext)
+
+                    FirebaseAuth.getInstance().currentUser?.let { it1 ->
+                        val user = Database.findUserById(it1.uid)
+                        if (user != null) {
+                            binding.tvWelcome.text = "Priviet ${user.name}, welcome to Room-o-Swap"
+                        }
+                    }
+
 
                 } else {
                     Toast.makeText(MainActivity(), it.exception.toString(), Toast.LENGTH_SHORT)

@@ -27,6 +27,13 @@ class AddRequestFragment : BaseFragment(R.layout.fragment_add_request) {
             inflater, R.layout.fragment_add_request, container, false
         )
 
+        FirebaseAuth.getInstance().currentUser?.let { it1 ->
+            val user = Database.findUserById(it1.uid)
+            if (user != null) {
+                binding.tvIamAt.text = user.hostel
+            }
+        }
+
         if (FirebaseAuth.getInstance().currentUser == null) {
             makeText(currContext, "currUser is null", Toast.LENGTH_SHORT).show()
         }
