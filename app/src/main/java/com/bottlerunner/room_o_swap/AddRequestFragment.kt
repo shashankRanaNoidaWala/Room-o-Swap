@@ -21,7 +21,7 @@ class AddRequestFragment : BaseFragment(R.layout.fragment_add_request) {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
         val binding = DataBindingUtil.inflate<FragmentAddRequestBinding>(
             inflater, R.layout.fragment_add_request, container, false
@@ -30,7 +30,7 @@ class AddRequestFragment : BaseFragment(R.layout.fragment_add_request) {
         FirebaseAuth.getInstance().currentUser?.let { it1 ->
             val user = Database.findUserById(it1.uid)
             if (user != null) {
-                binding.tvIamAt.text = user.hostel
+                binding.tvCurrHostel.text = user.hostel
             }
         }
 
@@ -44,12 +44,12 @@ class AddRequestFragment : BaseFragment(R.layout.fragment_add_request) {
             Log.d("DebugRequestGenerated","Request generated line 36")
 
 
-            var selectedHostel = binding.sToHostel.selectedItem.toString()
-            var roomRange: Pair<Int, Int> =
+            val selectedHostel = binding.sToHostel.selectedItem.toString()
+            val roomRange: Pair<Int, Int> =
                 Pair(binding.rangeSlider.valueFrom.toInt(), binding.rangeSlider.valueTo.toInt())
 
 
-            var currUserId = FirebaseAuth.getInstance().currentUser?.uid
+            val currUserId = FirebaseAuth.getInstance().currentUser?.uid
             var currUser: UserApna?
 
             currUserId?.let { it1 ->

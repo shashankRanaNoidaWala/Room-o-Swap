@@ -28,8 +28,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="88dp"
-            android:layout_marginTop="56dp"
+            android:layout_marginTop="44dp"
             android:text="AH-4"
+            android:textSize="20sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvIamAt" />
 
@@ -58,14 +59,33 @@
             android:id="@+id/rangeSlider"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="81dp"
             android:stepSize="1.0"
             android:valueFrom="0.0"
-            android:valueTo="400.0"
+            android:valueTo="350.0"
+            android:layout_marginEnd="32dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginTop="44dp"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/sToHostel"
+            app:layout_constraintTop_toBottomOf="@+id/tvSelectRange"
             app:values="@array/initial_slider_values" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0"
+            app:layout_constraintBottom_toBottomOf="@+id/rangeSlider"
+            app:layout_constraintEnd_toStartOf="@+id/rangeSlider"
+            app:layout_constraintTop_toTopOf="@+id/rangeSlider" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="350"
+            app:layout_constraintBottom_toBottomOf="@+id/rangeSlider"
+            app:layout_constraintStart_toEndOf="@+id/rangeSlider"
+            app:layout_constraintTop_toTopOf="@+id/rangeSlider" />
 
         <com.google.android.material.floatingactionbutton.ExtendedFloatingActionButton
             android:id="@+id/fabAdd"
@@ -79,6 +99,17 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
 
+        <TextView
+            android:id="@+id/tvSelectRange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            android:layout_marginTop="44dp"
+            android:text="Select the range of room numbers you would like to go to:"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/sToHostel" />
+
         <ImageView
             android:id="@+id/imageView3"
             android:layout_width="wrap_content"
@@ -89,6 +120,7 @@
             app:layout_constraintTop_toTopOf="@+id/tvCurrHostel"
             app:srcCompat="@drawable/ic_baseline_home_24" />
 
+
         <ImageView
             android:id="@+id/imageView4"
             android:layout_width="wrap_content"
@@ -98,6 +130,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/tvIWantToGoTo"
             app:srcCompat="@drawable/ic_to_hostel" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -37,7 +37,6 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         }
 
         setHasOptionsMenu(true)
-
         return binding.root
     }
 
