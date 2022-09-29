@@ -40,7 +40,7 @@ class SignInFragment : BaseFragment(R.layout.fragment_sign_in) {
     }
 
     private fun signInUser(email: String, password: String){
-        Toast.makeText(currContext,"Darling darling stand, stand by me, stand, stand by, stand by me, stand by me, stand by me",
+        Toast.makeText(currContext,"Loading...",
             Toast.LENGTH_LONG).show()
         showProgressDialog("Thamba thamba")
         FirebaseAuth.getInstance().signInWithEmailAndPassword(email,password).addOnCompleteListener {      //This is lamda function

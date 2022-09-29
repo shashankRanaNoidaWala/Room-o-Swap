@@ -2,15 +2,16 @@
     <!-- Base application theme. -->
     <style name="Theme.Roomoswap" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Primary brand color. -->
-        <item name="colorPrimary">#3949AB</item>
-        <item name="colorPrimaryVariant">#FE00ACC1</item>
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">#039BE5</item>
         <item name="colorOnPrimary">@color/white</item>
         <!-- Secondary brand color. -->
         <item name="colorSecondary">#039BE5</item>
-        <item name="colorSecondaryVariant">#8000ACC1</item>
+        <item name="colorSecondaryVariant">#039BE5</item>
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
-        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+        <item name="android:statusBarColor"
+            tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
 </resources>

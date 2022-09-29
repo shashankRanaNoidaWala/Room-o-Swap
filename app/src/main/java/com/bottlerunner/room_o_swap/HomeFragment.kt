@@ -37,6 +37,12 @@ class HomeFragment : BaseFragment(R.layout.fragment_home) {
         }
 
         setHasOptionsMenu(true)
+
+        binding.btnAddRequest.shrink()
+
+        binding.scrollView.setOnScrollChangeListener { view, i, i2, i3, i4 ->
+            binding.btnAddRequest.extend()
+        }
         return binding.root
     }
 
